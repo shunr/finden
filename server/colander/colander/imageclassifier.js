@@ -3,6 +3,8 @@
 'use strict';
 const watson = require('watson-developer-cloud');
 const conf = require('../config.json');
+const test = require('../test.json');
+const archiver = require('archiver');
 const uuidv4 = require('uuid/v4');
 const fs = require('fs');
 
@@ -12,83 +14,106 @@ let mod = module.exports = {};
 
 
 mod.classifyImage = (base64Data, tags) => {
-    let imageFiles = base64ToTempFile(base64Data);
-    let zipPath = zipImages(imageFiles);
 
-    let visualRecognition = watson.visual_recognition({
-        api_key: conf.classifier.WATSON_API_KEY,
-        version: 'v3',
-        version_date: '2016-05-20'
-    });
-    let params = {
-        images_file: fs.createReadStream('./leeks.zip'),
-        parameters: {
-            threshold: conf.classifier.WATSON_THRESHOLD,
-            owners: ['IBM']
-        }
-    };
-    visualRecognition.classify(params, function (err, res) {
-        if (err) {
-            console.log(err);
-        } else {
-            let matchedTags = getMatchedTags(res.images, tags);
-            return matchedTags;
-        }
-    });
+    return new Promise((resolve, reject) => {
+        zipImages(base64Data).then((zipPath) => {
+            let visualRecognition = watson.visual_recognition({
+                api_key: conf.classifier.WATSON_API_KEY,
+                version: 'v3',
+                version_date: '2016-05-20'
+            });
+            let params = {
+                images_file: fs.createReadStream(zipPath),
+                parameters: {
+                    threshold: conf.classifier.WATSON_THRESHOLD,
+                    owners: ['IBM']
+                }
+            };
+            new Promise((resolve, reject) => {
+                visualRecognition.classify(params, function (err, res) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        let matchedTags = getMatchedTags(res.images, tags);
+                        resolve(matchedTags);
 
+                    }
+                });
+            }).then((matchedTags) => {
+                resolve(matchedTags);
+            });
+        });
+    });
 }
 
 function base64ToTempFile(base64Data) {
+    let c = 0;
     let paths = [];
-    for (let i = 0; i < base64Data.length; i++) {
-        let data = base64Data.replace(/^data:image\/png;base64,/, "");
-        let path = '../temp/' + uuidv4();
+    return new Promise((resolve, reject) => {
+        for (let i = 0; i < base64Data.length; i++) {
+            let matches = base64Data[i].match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
 
-        require("fs").writeFile(path, data, 'base64', function (err) {
-            console.log(err);
-        });
-        path.append(path);
-    }
-    return paths;
-}
+            let data = new Buffer(matches[2], 'base64');
 
-function zipImages(imagePaths) {
-    let id = uuidv4()
-    let zipPath = '../temp' + id;
-    var output = fs.createWriteStream(zipPath);
-    var archive = archiver('zip', {
-        zlib: { level: 9 }
-    });
-
-    output.on('close', function () {
-        console.log('Archive ' + zipPath + 'successfully saved');
-        return zipPath;
-    });
-
-    archive.on('warning', function (err) {
-        if (err.code === 'ENOENT') {
-            console.log(err);
-        } else {
-            throw err;
+            let path = "./temp/" + uuidv4() + ".jpg";
+            fs.writeFile(path, data, (err) => {
+                console.log("Written file number " + c);
+                if (err) {
+                    console.log(err);
+                }
+                
+                paths.push(path);
+                c+=1
+                if (c == base64Data.length) {
+                    console.log(paths);
+                    resolve(paths);
+                }
+            });
         }
     });
+}
 
-    archive.on('error', function (err) {
-        throw err;
+function zipImages(base64Data) {
+    return new Promise((resolve, reject) => {
+        base64ToTempFile(base64Data).then((imagePaths) => {
+            let id = uuidv4()
+            let zipPath = './temp/' + id + '.zip';
+            var output = fs.createWriteStream(zipPath);
+            var archive = archiver('zip', {
+                zlib: { level: 9 }
+            });
+
+            output.on('close', function () {
+                console.log('Archive ' + zipPath + ' successfully saved');
+                resolve(zipPath);
+            });
+
+            archive.on('warning', function (err) {
+                if (err.code === 'ENOENT') {
+                    console.log(err);
+                } else {
+                    throw err;
+                }
+            });
+
+            archive.on('error', function (err) {
+                throw err;
+            });
+
+            archive.pipe(output);
+
+            for (let i = 0; i < imagePaths.length; i++) {
+                archive.append(fs.createReadStream(imagePaths[i]), { name: uuidv4() + '.jpg' }); //replace with proper file extension
+            }
+
+            archive.finalize();
+        });
     });
-
-    archive.pipe(output);
-
-    for (let i = 0; i < imagePaths.length; i++) {
-        archive.append(fs.createReadStream(imagePaths[i]), { name: uuidv4() + '.jpg' }); //replace with proper file extension
-    }
-
-    archive.finalize();
 }
 
 function getMatchedTags(classification, targetTags) {
     let tagSum = {}
-    
+
     for (let i = 0; i < classification.length; i++) {
         let classes = classification[i].classifiers[0].classes;
         for (let j = 0; j < classes.length; j++) {
@@ -102,7 +127,7 @@ function getMatchedTags(classification, targetTags) {
 
     let matchedTags = [];
     for (let i = 0; i < targetTags.length; i++) {
-        if (tagSum[targetTags[i]]>conf.classifier.MATCH_THRESHOLD){
+        if (tagSum[targetTags[i]] > conf.classifier.MATCH_THRESHOLD) {
             matchedTags.push(targetTags[i]);
         }
     }
