@@ -3,6 +3,7 @@
 const request = require('request');
 const io = require('socket.io')();
 const imageclassifier = require('./imageclassifier');
+const db = require('./db');
 
 let mod = module.exports = {};
 
@@ -16,6 +17,9 @@ mod.init = (app) => {
         });
         console.log(socket);
         console.log("A user connected");
+    });
+    db.getTargetList('test').then((target) => {
+        console.log(target);
     });
 };
 
