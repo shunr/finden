@@ -1,4 +1,6 @@
-let request = require(request);
+'use strict';
 
-let mod = module.exports = {};
+const request = require('request');
+
+const mod = module.exports = {};
 
