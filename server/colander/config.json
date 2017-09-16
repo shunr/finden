@@ -1,8 +1,7 @@
 {
     "classifier": {
-        "CLASSIFY_API_URL": "https://watson-api-explorer.mybluemix.net/visual-recognition/api/v3/classify",
         "WATSON_API_KEY": "0b8353b0e4381853378eacf8cdbe40365024dd76",
-        "THRESHOLD": "0.7"
+        "THRESHOLD": "0.6"
     }
 
 }

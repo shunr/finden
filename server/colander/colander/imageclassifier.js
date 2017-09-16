@@ -1,7 +1,7 @@
 //Handle all image classification work
 //Input base64 encoded images & target object tag and return a boolean
 'use strict';
-const req = require('request');
+const watson = require('watson-developer-cloud');
 const conf = require('../config.json');
 const uuidv4 = require('uuid/v4');
 const fs = require('fs');
@@ -9,28 +9,95 @@ const fs = require('fs');
 let mod = module.exports = {};
 
 //take in single image and classify it
-function classifyImage(image) {
 
-    req.post(conf.classifier.CLASSIFY_API_URL+'?api_key='+conf.classifier.WATSON_API_KEY).form({
-        'images_file': image,
-        'parameters': {
-            'threshold': conf.classifier.THRESHOLD,
-            'owners': ['IBM']
+
+
+
+mod.classifyImage = (base64Data, tags) => {
+    //let imageFiles = base64ToTempFile(base64Data);
+    //let zipPath = zipImages(imageFiles);
+
+    let visualRecognition = watson.visual_recognition({
+        api_key: conf.classifier.WATSON_API_KEY,
+        version: 'v3',
+        version_date: '2016-05-20'
+    });
+    let params = {
+        images_file: fs.createReadStream('./leeks.zip'),
+        parameters: {
+            threshold: conf.classifier.THRESHOLD,
+            owners: ['IBM']
+        }
+    };
+    visualRecognition.classify(params, function (err, res) {
+        if (err){
+            console.log(err);
+        }else{
+            console.log(JSON.stringify(res));
+
+            let matchedTags = getMatchedTags(res.images, tags);
+
         }
     });
+    
 }
+mod.classifyImage();
 
 
 function base64ToTempFile(base64Data) {
-    let data = base64Data.replace(/^data:image\/png;base64,/, "");
-    let path = '../temp/' + uuidv4();
+    let paths = [];
+    for (let i = 0; i < base64Data.length; i++) {
+        let data = base64Data.replace(/^data:image\/png;base64,/, "");
+        let path = '../temp/' + uuidv4();
 
-    require("fs").writeFile(path, data, 'base64', function(err) {
-      console.log(err);
-    });
-    return path;
+        require("fs").writeFile(path, data, 'base64', function (err) {
+            console.log(err);
+        });
+        path.append(path);
+    }
+    return paths;
 }
 
 function zipImages(imagePaths) {
+    let id = uuidv4()
+    let zipPath = '../temp' + id;
+    var output = fs.createWriteStream(zipPath);
+    var archive = archiver('zip', {
+        zlib: { level: 9 }
+    });
+
+    output.on('close', function () {
+        console.log('Archive ' + zipPath + 'successfully saved');
+        return zipPath;
+    });
+
+    archive.on('warning', function (err) {
+        if (err.code === 'ENOENT') {
+            console.log(err);
+        } else {
+            throw err;
+        }
+    });
+
+    archive.on('error', function (err) {
+        throw err;
+    });
+
+    archive.pipe(output);
+
+    for (let i = 0; i < imagePaths.length; i++) {
+        archive.append(fs.createReadStream(imagePaths[i]), { name: uuidv4() + '.jpg' }); //replace with proper file extension
+    }
+
+    archive.finalize();
+}
+
+function getMatchedTags(classification, tags){
+    
+    for(let i=0;i<classification.length;i++){
+
+    }
 
 }
+
+return mod;
