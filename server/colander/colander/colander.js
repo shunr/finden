@@ -2,6 +2,7 @@
 
 const request = require('request');
 const io = require('socket.io')();
+const imageclassifier = require('./imageclassifier');
 
 let mod = module.exports = {};
 

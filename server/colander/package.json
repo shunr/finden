@@ -16,6 +16,7 @@
     "request": "^2.81.0",
     "serve-favicon": "~2.4.2",
     "socket.io": "^2.0.3",
-    "uuid": "^3.1.0"
+    "uuid": "^3.1.0",
+    "watson-developer-cloud": "^2.39.0"
   }
 }
