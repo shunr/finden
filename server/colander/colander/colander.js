@@ -1,15 +1,15 @@
 'use strict';
 
 const request = require('request');
-const socket_io = require('socket.io');
-const io = socket_io();
+const io = require('socket.io')();
 
 let mod = module.exports = {};
 
-
 mod.init = (app) => {
     app.io = io;
-    io.on('connection', function(socket) {
-        console.log( "A user connected" );
+    let ioGame = io.of('/game');
+    ioGame.on('connection', (socket) => {
+        socket.on('auth', );
+        console.log("A user connected");
     });
 };
