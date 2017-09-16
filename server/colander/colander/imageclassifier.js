@@ -11,11 +11,9 @@ let mod = module.exports = {};
 //take in single image and classify it
 
 
-
-
 mod.classifyImage = (base64Data, tags) => {
-    //let imageFiles = base64ToTempFile(base64Data);
-    //let zipPath = zipImages(imageFiles);
+    let imageFiles = base64ToTempFile(base64Data);
+    let zipPath = zipImages(imageFiles);
 
     let visualRecognition = watson.visual_recognition({
         api_key: conf.classifier.WATSON_API_KEY,
@@ -25,24 +23,20 @@ mod.classifyImage = (base64Data, tags) => {
     let params = {
         images_file: fs.createReadStream('./leeks.zip'),
         parameters: {
-            threshold: conf.classifier.THRESHOLD,
+            threshold: conf.classifier.WATSON_THRESHOLD,
             owners: ['IBM']
         }
     };
     visualRecognition.classify(params, function (err, res) {
-        if (err){
+        if (err) {
             console.log(err);
-        }else{
-            console.log(JSON.stringify(res));
-
+        } else {
             let matchedTags = getMatchedTags(res.images, tags);
-
+            return matchedTags;
         }
     });
-    
-}
-mod.classifyImage();
 
+}
 
 function base64ToTempFile(base64Data) {
     let paths = [];
@@ -92,12 +86,27 @@ function zipImages(imagePaths) {
     archive.finalize();
 }
 
-function getMatchedTags(classification, tags){
+function getMatchedTags(classification, targetTags) {
+    let tagSum = {}
     
-    for(let i=0;i<classification.length;i++){
-
+    for (let i = 0; i < classification.length; i++) {
+        let classes = classification[i].classifiers[0].classes;
+        for (let j = 0; j < classes.length; j++) {
+            if (tagSum[classes[j].class]) {
+                tagSum[classes[j].class] += classes[j].score;
+            } else {
+                tagSum[classes[j].class] = classes[j].score;
+            }
+        }
     }
 
+    let matchedTags = [];
+    for (let i = 0; i < targetTags.length; i++) {
+        if (tagSum[targetTags[i]]>conf.classifier.MATCH_THRESHOLD){
+            matchedTags.push(targetTags[i]);
+        }
+    }
+    return matchedTags;
 }
 
 return mod;
