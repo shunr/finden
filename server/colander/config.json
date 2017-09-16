@@ -1,7 +1,8 @@
 {
     "classifier": {
         "WATSON_API_KEY": "0b8353b0e4381853378eacf8cdbe40365024dd76",
-        "THRESHOLD": "0.6"
+        "WATSON_THRESHOLD": 0.6,
+        "MATCH_THRESHOLD": 2.8
     },
     "firebase": {
         "apiKey": "AIzaSyDEvfSGTMoYc_nl8o0rwXgpP9n4bXTXQ1I",
