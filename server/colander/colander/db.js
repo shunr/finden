@@ -132,6 +132,28 @@ mod.initUser = (user) => {
     return new Promise(promise);
 };
 
+mod.getLeaderboard = () => {
+    // DISGUSTING hack fix this soon
+    let promise = (resolve, reject) => {
+        usersRef.once('value').then((data) => {
+            let unranked = data.val();
+            let output = [];
+            for (let id in unranked) {
+                output.push({
+                    userId: id,
+                    username: unranked[id].username,
+                    score: unranked[id].score
+                });
+            }
+            output.sort((a, b) => {
+                return b.score - a.score;
+            });
+            resolve(output);
+        });
+    };
+    return new Promise(promise);
+};
+
 function updateUserScores(userId, prevScore, newScore, targetName) {
     let foundByRef = targetMetaRef.child(targetName + '/foundBy');
     foundByRef.once('value').then((data) => {

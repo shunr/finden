@@ -13,6 +13,9 @@ mod.runGameSession = (socket) => {
             foundListener(socket);
         });
     });
+    db.getLeaderboard().then((data) => {
+        console.log(data);
+    });
     //db.targetFound('RxRS7Ys4EETn2ddsdsdJpIsssqZl7m1', 'chair');
 }
 
