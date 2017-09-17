@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const colander = require('./colander/colander');
 
 const index = require('./routes/index');
-const users = require('./routes/users');
+const leaderboard = require('./routes/leaderboard');
 
 let app = express();
 
@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/leaderboard', leaderboard);
 
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
