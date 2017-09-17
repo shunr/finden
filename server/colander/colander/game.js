@@ -25,7 +25,10 @@ function foundListener(socket) {
                     db.targetFound(socket.userId, found[i]);
                     socket.emit('correct', found[i]);
                 }
-            });  
+            });
         });
+    });
+    socket.on('replace', (data) => {
+        db.replaceItem(socket.userId, data)
     });
 }
