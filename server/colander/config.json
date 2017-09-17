@@ -2,7 +2,7 @@
     "targetListSize": 5,
     "classifier": {
         "WATSON_API_KEY": "0b8353b0e4381853378eacf8cdbe40365024dd76",
-        "WATSON_THRESHOLD": 0.6,
-        "MATCH_THRESHOLD": 0.7
+        "WATSON_THRESHOLD": 0.5,
+        "MATCH_THRESHOLD": 0.6
     }
 }
