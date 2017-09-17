@@ -1,8 +1,79 @@
-extends layout
-
+extend layout
 block content
-  h1= title
-  p Welcome to #{title}
+  // Following Menu
+  .ui.large.top.fixed.hidden.menu
+    .ui.container
+      a.active.item Home
+      a.item Leaderboards
+  // Sidebar Menu
+  .ui.vertical.inverted.sidebar.menu
+    a.active.item Home
+    a.item Leaderboards
 
-block scripts
-  script(src='./js/test.js')
+  // Page Contents
+  .pusher
+    .ui.inverted.vertical.masthead.center.aligned.segment
+      .ui.container
+        .ui.large.secondary.inverted.pointing.menu
+          a.toc.item
+            i.sidebar.icon
+          a.active.item 
+            i.fa.fa-globe &nbsp;&nbsp;
+            | Home 
+          a.item 
+            i.fa.fa-trophy &nbsp;&nbsp;
+            | Leaderboards 
+      .ui.text.container
+        h1.ui.inverted.header
+          | Scavenger Hunt
+        h2 Find whatever you want when you want to.
+        .ui.huge.primary.button
+          | Join the Hunt!
+    .ui.vertical.stripe.segment
+      .ui.middle.aligned.stackable.grid.container
+        .row
+          .eight.wide.column
+            h3.ui.header An International Scavenger Hunt
+            p
+              | Compete against everyone in the world to be the number one SCUNTer.
+            h3.ui.header Bleeding Edge Object Detection
+            p
+              | Using IBM's Watson Visual Recognition API, SCUNT comfirms your find with just your mobile camera!
+          .four.wide.right.floated.column
+            img.ui.small.rounded.image(src='./images/international-moving-icon1.png')
+            br
+            br
+            img.ui.large.rounded.image(src='./images/ibm-bluemix.jpg')
+        .row
+          .center.aligned.column
+            a.ui.huge.button Check Them Out
+            
+    .ui.vertical.stripe.quote.segment
+      .ui.equal.width.stackable.internally.celled.grid
+        .center.aligned.row
+          .column
+            h3 Ali 
+            p Backend 
+          .column
+            h3 Shun
+            p Backend
+          .column
+            h3 Derek
+            p Frontend
+          .column
+            h3 Eddie
+            p Frontend
+    .ui.vertical.stripe.segment
+      .ui.text.container
+        h3.ui.header Did We Tell You About Our Bananas?
+        p
+          | Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but its really true. It took years of gene splicing and combinatory DNA research, but our bananas can really dance.
+        a.ui.large.button I'm Still Quite Interested
+    .ui.inverted.vertical.footer.center.aligned.segment(style="padding: 2em;")
+      | Built with &nbsp;
+      i.fa.fa-heart 
+      | &nbsp;&nbsp;HTN 2017 
+        
+  script(src='./js/jquery-3.2.1.min.js')
+  script(src='./js/semantic.min.js')
+  script(src='./js/menufix.js')
