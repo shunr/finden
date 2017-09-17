@@ -1,34 +1,28 @@
 extend layout
 block content
-  // Following Menu
-  .ui.large.top.fixed.hidden.menu
-    .ui.container
-      a.active.item Home
-      a.item Leaderboards
-  // Sidebar Menu
-  .ui.vertical.inverted.sidebar.menu
-    a.active.item Home
-    a.item Leaderboards
-
   // Page Contents
   .pusher
-    .ui.inverted.vertical.masthead.center.aligned.segment
+    .ui.inverted.vertical.masthead.center.aligned.segment(style="background-image: url(\"./images/background4.png\");background-attachment: fixed; background-repeat: no-repeat; background-size:cover;min-height: 0; height: 100vh; max-height:700px;")
       .ui.container
-        .ui.large.secondary.inverted.pointing.menu
-          a.toc.item
-            i.sidebar.icon
+        .ui.large.secondary.inverted.pointing.menu(style="border:none;")
           a.active.item 
             i.fa.fa-globe &nbsp;&nbsp;
-            | Home 
-          a.item 
+            | home 
+          a.item(href="../leaderboard")
             i.fa.fa-trophy &nbsp;&nbsp;
-            | Leaderboards 
+            | leaderboards 
       .ui.text.container
-        h1.ui.inverted.header
-          | Scavenger Hunt
-        h2 Find whatever you want when you want to.
-        .ui.huge.primary.button
-          | Join the Hunt!
+        h1.ui.inverted.header(style="margin-top:2em; letter-spacing: -0.05em;")
+          | f i n d e n
+        h2 the massively multiplayer scavenger hunt
+        br
+        .ui.huge.violet.button
+          | join the hunt!
+    .ui.vertical.stripe.segment
+      .ui.text.container
+        h3.ui.header The World's First Digital Recognition Scavenger Hunt
+        p
+          | Traditional scavenger hunts depend on an organizer to collect a list of items, and then manually judge when participants find them. finden is a real-life scavenger hunting game that takes this out of the equation. We use AI object recognition to confirm finds, and implement a dynamic scoring system based on rarity. Just pick up your phone and start playing!
     .ui.vertical.stripe.segment
       .ui.middle.aligned.stackable.grid.container
         .row
@@ -38,17 +32,15 @@ block content
               | Compete against everyone in the world to be the number one SCUNTer.
             h3.ui.header Bleeding Edge Object Detection
             p
-              | Using IBM's Watson Visual Recognition API, SCUNT comfirms your find with just your mobile camera!
+              | Using <a href="https://www.ibm.com/watson/services/visual-recognition/"> IBM's Watson Visual Recognition API </a>, finden comfirms your find simply with photos taken by your mobile camera!
           .four.wide.right.floated.column
             img.ui.small.rounded.image(src='./images/international-moving-icon1.png')
             br
             br
             img.ui.large.rounded.image(src='./images/ibm-bluemix.jpg')
-        .row
-          .center.aligned.column
-            a.ui.huge.button Check Them Out
             
-    .ui.vertical.stripe.quote.segment
+    .ui.vertical.stripe.quote.center.aligned.segment
+      h3.ui.header The Team
       .ui.equal.width.stackable.internally.celled.grid
         .center.aligned.row
           .column
@@ -63,14 +55,11 @@ block content
           .column
             h3 Eddie
             p Frontend
-    .ui.vertical.stripe.segment
-      .ui.text.container
-        h3.ui.header Did We Tell You About Our Bananas?
-        p
-          | Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but its really true. It took years of gene splicing and combinatory DNA research, but our bananas can really dance.
-        a.ui.large.button I'm Still Quite Interested
-    .ui.inverted.vertical.footer.center.aligned.segment(style="padding: 2em;")
-      | Built with &nbsp;
+        .center.aligned.row
+          .column
+            p check out our <a href="https://github.com/shunr/scavenger-hunt/">GitHub repo</a>
+    .ui.inverted.vertical.footer.center.aligned.segment(style="padding: 2em;background-image: url(\"./images/background4.png\");background-attachment: fixed; background-repeat: no-repeat; background-size:cover;")
+      | built with &nbsp;
       i.fa.fa-heart 
       | &nbsp;&nbsp;HTN 2017 
         

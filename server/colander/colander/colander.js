@@ -19,7 +19,3 @@ mod.init = (app) => {
     });*/
     //db.targetFound('3GijTGv3q1XXZWHV5Tg9Y4vbjxe2', 'bottle');
 };
-
-function onAuth(data) { 
-
-}
