@@ -1,15 +1,34 @@
 import firebase from './firebase'
+import socket from './socket'
 
-export function getUser() {
-    console.log('it kinda works')
+export function getUser(username) {
     return dispatch => {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
-                dispatch(storeUserInfo(user))
+                dispatch({
+                    type: 'GET_USER',
+                    email: user.email,
+                    uid: user.uid,
+                })
+                if (username) {
+                    sendUserInfo(user.uid, user.email, username)
+                }
+                dispatch(getUsername(user.uid))
             } else {
               // No user is signed in.
             }
         });
+    }
+}
+
+export function getUsername(uid) {
+    return dispatch => {
+        firebase.database().ref('/users/' + uid + '/username').once('value').then(snapshot => {
+            dispatch({
+                type: "GET_USERNAME",
+                username: snapshot.val()
+            })
+        })
     }
 }
 
@@ -25,5 +44,16 @@ export function changeScreen(newScreen) {
     return {
         type: 'CHANGE_SCREEN',
         newScreen: newScreen
+    }
+}
+
+export function sendUserInfo(userid, email, username) {
+    //Sends the new account's username and email to the server
+    socket.emit('auth', {userId: userid, email: email, username: username})
+}
+
+export function sendPhoto() {
+    return dispatch => {
+        socket.emit('succ', {hello: 'world'})
     }
 }

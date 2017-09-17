@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { View, TouchableHighlight, Text } from 'react-native'
 import { connect } from 'react-redux'
-import { changeScreen } from '../actions'
+import { changeScreen, sendPhoto } from '../actions'
+import socket from '../socket'
 
 class MainMenu extends Component {
     render() {
@@ -21,6 +22,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         changeScreen: (newScreen) => {
             dispatch(changeScreen(newScreen))
+        },
+        sendPhoto: () => {
+            dispatch(sendPhoto())
         }
     }
 }

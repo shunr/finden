@@ -15,10 +15,13 @@ class LoginScreen extends Component {
     handlePass = (text) => {
         this.setState({password: text})
     }
+    handleUsername = (text) => {
+        this.setState({username: text})
+    }
     createUser = () => {
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(
             () => {
-                this.props.getUser();
+                this.props.getUser(this.state.username)
                 this.setState({firebaseError : ''})
             },
             error => {
@@ -29,6 +32,16 @@ class LoginScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <View style={styles.row}>
+                    <View style={styles.col}>
+                        <MKTextField
+                            tintColor={MKColor.Lime}
+                            textInputStyle={{color: MKColor.Orange}}
+                            onChangeText={this.handleUsername}
+                            placeholder="Username"
+                        />
+                    </View>
+                </View>
                 <View style={styles.row}>
                     <View style={styles.col}>
                         <MKTextField
@@ -86,9 +99,9 @@ const mapDispatchToProps = (dispatch) => {
         changeScreen: (newScreen) => {
             dispatch(changeScreen(newScreen))
         },
-        getUser: () => {
-            dispatch(getUser())
-        }
+        getUser: (username) => {
+            dispatch(getUser(username))
+        },
     }
 }
 

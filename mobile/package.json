@@ -25,6 +25,7 @@
     "react-native": "^0.47.0",
     "react-native-material-kit": "^0.4.1",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "socket.io-client": "^2.0.3"
   }
 }
