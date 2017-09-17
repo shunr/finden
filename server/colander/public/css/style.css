@@ -79,7 +79,8 @@
 
 div.ordered.list {
   font-size: large;
-  color: #000000
+  color: #333;
+  padding: 1em;
 }
 
 div.ui.relaxed.ordered.divided.list div.item {
@@ -89,12 +90,12 @@ div.ui.relaxed.ordered.divided.list div.item {
 div.ui.relaxed.ordered.divided.list div.item::before {
   left: 2em;
   font-size: large;
-  color: #000000
+  color: #ccc;
 }
 
-div.ui.relaxed.ordered.divided.list div.name {
+div.ui.relaxed.ordered.divided.list strong.name {
   position: absolute;
-  left: 5%;
+  left: 46px;
 }
 
 body {

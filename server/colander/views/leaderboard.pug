@@ -11,18 +11,18 @@ block content
           a.active.item 
             i.fa.fa-trophy &nbsp;&nbsp;
             | leaderboards
-      .ui.card(style="width:80%;margin:5em 0 3em 0; position:relative; left:50%;transform: translateX(-50%);")
-        .content
-          hi.ui.header.violet(style="font-size:3rem;") Top Finders
-        .content
-          .row
-            .three.wide.column
-            .ten.wide.column
-              .ui.relaxed.ordered.divided.list
-                each user in leaderboardData
-                  .item 
-                    .right.floated.content= user.score
-                    .content.name= user.username
+      .ui.container.text
+        .ui.segment.padded.piled(style="width:80%;margin:5em 0 3em 0; position:relative; left:50%;transform: translateX(-50%);")
+          .content(style="margin-top:12px")
+            h1.ui.header.violet top finders &nbsp;<i class="fa fa-moon-o"></i>
+          .content
+            .row
+              .ten.wide.column.padded
+                .ui.relaxed.ordered.divided.list
+                  each user in leaderboardData
+                    .item 
+                      .right.floated.content= user.score
+                      strong.content.name= user.username
       
             
     .ui.inverted.vertical.footer.center.aligned.segment(style="background-image: url(\"./images/background4.png\");background-attachment: fixed; background-repeat: no-repeat; background-size:cover; padding: 2em 0;")
