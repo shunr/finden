@@ -13,14 +13,12 @@ mod.runGameSession = (socket) => {
             foundListener(socket);
         });
     });
-    db.getLeaderboard().then((data) => {
-        console.log(data);
-    });
     //db.targetFound('RxRS7Ys4EETn2ddsdsdJpIsssqZl7m1', 'chair');
 }
 
 function foundListener(socket) {
     socket.on('found', (data) => {
+        console.log(data);
         db.getCurrentTargets().then((tags) => {
             imageclassifier.classifyImage(data.images, tags).then((found) => {
                 for (let i = 0; i < found.length; i++) {
