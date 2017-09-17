@@ -1,17 +1,10 @@
 extend layout
 block content
-  // Sidebar Menu
-  .ui.vertical.inverted.sidebar.menu
-    a.active.item Home
-    a.item(href="../leaderboard") Leaderboards
-
   // Page Contents
   .pusher
-    .ui.inverted.vertical.masthead.center.aligned.segment(style="background-image: url(\"./images/background4.png\");background-attachment: fixed; background-repeat: no-repeat; background-size:cover;min-height:100vh")
+    .ui.inverted.vertical.masthead.center.aligned.segment(style="background-image: url(\"./images/background4.png\");background-attachment: fixed; background-repeat: no-repeat; background-size:cover;min-height: 0; height:100vh;max-height:700px");
       .ui.container
         .ui.large.secondary.inverted.pointing.menu(style="border:none;")
-          a.toc.item
-            i.sidebar.icon
           a.active.item 
             i.fa.fa-globe &nbsp;&nbsp;
             | home 
@@ -39,7 +32,7 @@ block content
               | Compete against everyone in the world to be the number one SCUNTer.
             h3.ui.header Bleeding Edge Object Detection
             p
-              | Using IBM's Watson Visual Recognition API, SCUNT comfirms your find with just your mobile camera!
+              | Using <a href="https://www.ibm.com/watson/services/visual-recognition/"> IBM's Watson Visual Recognition API </a>, finden comfirms your find simply with photos taken by your mobile camera!
           .four.wide.right.floated.column
             img.ui.small.rounded.image(src='./images/international-moving-icon1.png')
             br
@@ -62,7 +55,9 @@ block content
           .column
             h3 Eddie
             p Frontend
-    
+        .center.aligned.row
+          .column
+            p check out our <a href="https://github.com/shunr/scavenger-hunt/">GitHub repo</a>
     .ui.inverted.vertical.footer.center.aligned.segment(style="padding: 2em;background-image: url(\"./images/background4.png\");background-attachment: fixed; background-repeat: no-repeat; background-size:cover;")
       | built with &nbsp;
       i.fa.fa-heart 
