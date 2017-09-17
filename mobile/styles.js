@@ -38,4 +38,33 @@ module.exports = StyleSheet.create({
     fontSize: 12,
     fontWeight: '300',
   },
+  cardMain: {
+    backgroundColor: '#f1f1f1',
+    width: '100%',
+    margin: 32,
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    padding: 16,
+    borderRadius: 8
+  },
+  buttonRegister: {
+    backgroundColor: MKColor.BlueGrey,
+    paddingLeft: 32,
+    paddingRight: 32,
+    paddingTop: 16,
+    paddingBottom: 16,
+    borderRadius: 8,
+    marginBottom: 24,
+    marginTop: 10
+  },
+  buttonBack: {
+    position: 'absolute',
+    top: 10,
+    left: 10
+  },
+  iconLogo: {
+    padding: 20,
+    textAlign: 'center'
+  }
 });

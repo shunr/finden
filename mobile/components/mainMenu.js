@@ -9,10 +9,12 @@ class MainMenu extends Component {
         return (
             <View style={{flex:1, justifyContent: 'center'}}>
                 <TouchableHighlight onPress={() => this.props.changeScreen('register')}>
-                    <Text>
-                        Register
+                  <View>
+                    <Text style={{backgroundColor: '#EEEEEE',textAlign: 'center', fontSize: 35, alignItems: 'center', flexDirection : 'row', justifyContent:'center'}}>
+                        Welcome
                     </Text>
-                </TouchableHighlight> 
+                  </View>
+                </TouchableHighlight>
             </View>
         )
     }
