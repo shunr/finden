@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import MainMenu from './mainMenu'
 import Register from './register'
 import Game from './game'
+import Leaderboard from './leaderboard';
+import Login from './login';
+
 import { connect } from 'react-redux'
 
 class ScreenTransition extends Component {
@@ -15,6 +18,10 @@ class ScreenTransition extends Component {
                 return <Register />
             case 'game':
                 return <Game />
+            case 'login':
+                return <Login />
+            // case 'leaderboard':
+            //   return <Leaderboard />
         }
     }
 }

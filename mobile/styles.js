@@ -58,13 +58,26 @@ module.exports = StyleSheet.create({
     marginBottom: 24,
     marginTop: 10
   },
-  buttonBack: {
-    position: 'absolute',
-    top: 10,
-    left: 10
-  },
+
   iconLogo: {
     padding: 20,
     textAlign: 'center'
-  }
+  },
+  backgroundImage: {
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: 'cover',
+    alignItems: 'center',
+    flexDirection : 'row',
+    justifyContent:'center',
+    padding: 32
+  },
+  col: {
+    flex: 1,
+    flexDirection: 'column',
+    marginLeft: 7, marginRight: 7,
+    padding: 8,
+    // color: '#FFF',
+  },
 });

@@ -1,5 +1,6 @@
 import firebase from './firebase'
 import socket from './socket'
+import request from 'request'
 
 export function getUser(username) {
     return dispatch => {
@@ -29,6 +30,12 @@ export function getUsername(uid) {
                 username: snapshot.val()
             })
         })
+    }
+}
+
+export function getLeaderboard() {
+    return dispatch => {
+        request('http://10.21.225.54/leaderJson').then(data => console.log(data))
     }
 }
 

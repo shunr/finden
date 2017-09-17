@@ -11,7 +11,7 @@ const MK = require('react-native-material-kit');
 const { MKButton, MKTextField, MKColor } = MK
 //const appStyles = require('../styles');
 
-class Register extends Component {
+class Login extends Component {
   handleEmail = (text) => {
     this.setState({email : text})
   }
@@ -22,9 +22,15 @@ class Register extends Component {
     this.setState({username: text})
   }
   createUser = () => {
+    // firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    //   // Handle Errors here.
+    //   var errorCode = error.code;
+    //   var errorMessage = error.message;
+    //   // ...
+    // });
+    //
 
-
-    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(
+    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(
       () => {
         this.props.getUser(this.state.username)
         this.setState({firebaseError : ''})
@@ -35,9 +41,11 @@ class Register extends Component {
     )
 
     this.props.changeScreen('game')
+
+
   }
-  goLogin = () => {
-    this.props.changeScreen('login')
+  goRegister = () => {
+    this.props.changeScreen('register')
 
   }
 
@@ -53,16 +61,7 @@ class Register extends Component {
               <Icon style={appStyles.iconLogo} name="rocket" size={42} color={MKColor.BlueGrey} />
             </View>
           </View>
-          <View style={styles.row}>
-            <View style={styles.col}>
-              <MKTextField
-                // tintColor={'#FFF'}
-                textInputStyle={'#222'}
-                onChangeText={this.handleUsername}
-                placeholder="Username"
-              />
-            </View>
-          </View>
+
           <View style={styles.row}>
             <View style={styles.col}>
               <MKTextField
@@ -85,27 +84,26 @@ class Register extends Component {
           <View style={styles.row}>
             <TouchableHighlight style={appStyles.buttonRegister} onPress={this.createUser}>
               <Text style={{color: '#fff'}}>
-                Register <Icon name="rocket" size={16} />
+                Login <Icon name="rocket" size={16} />
               </Text>
             </TouchableHighlight>
           </View>
-
           <View style={styles.row}>
-            <TouchableHighlight style={appStyles.buttonRegister} onPress={this.goLogin}>
+            <TouchableHighlight style={appStyles.buttonRegister} onPress={this.goRegister}>
               <Text style={{color: '#fff'}}>
-                Login Instead <Icon name="rocket" size={12} />
+                Register Instead <Icon name="rocket" size={10} />
               </Text>
             </TouchableHighlight>
           </View>
           {/* <TouchableHighlight style={appStyles.buttonBack} onPress={() => this.props.changeScreen('mainMenu')}>
-            <Icon name="chevron-left" size={30} color='#aaa' />
-          </TouchableHighlight> */}
-        </View>
-      </Image>
+          <Icon name="chevron-left" size={30} color='#aaa' />
+        </TouchableHighlight> */}
+      </View>
+    </Image>
 
 
-    )
-  }
+  )
+}
 }
 
 const styles = Object.assign({}, appStyles, StyleSheet.create({
@@ -148,4 +146,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Register)
+export default connect(null, mapDispatchToProps)(Login)
