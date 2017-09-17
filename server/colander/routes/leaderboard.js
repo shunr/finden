@@ -1,9 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET home page. */
+const db = require('../colander/db');
+
+/* GET leaderboard page. */
 router.get('/leaderboard', function(req, res, next) {
-  res.render('leaderboard', { title: 'Express' });
+  db.getLeaderboard().then((data)=>{
+    res.render('leaderboard', { title: 'Finden', leaderboardData: data });
+  });
+  
 });
 
 module.exports = router;

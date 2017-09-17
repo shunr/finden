@@ -1,0 +1,42 @@
+extend layout
+block content
+  // Sidebar Menu
+  .ui.vertical.inverted.sidebar.menu
+    a.item(href="./") home
+    a.active.item leaderboards
+
+  // Page Contents
+  .pusher
+    .ui.inverted.vertical.center.aligned.segment(style="background-image: url(\"./images/background4.png\");background-attachment: fixed; background-repeat: no-repeat; background-size:cover;min-height:2em")
+      .ui.container
+        .ui.large.secondary.inverted.pointing.menu(style="border:none;")
+          a.toc.item
+            i.sidebar.icon
+          a.item(href="./") 
+            i.fa.fa-globe &nbsp;&nbsp;
+            | home 
+          a.active.item 
+            i.fa.fa-trophy &nbsp;&nbsp;
+            | leaderboards
+      .ui.card(style="width:80%;margin:5em 0 3em 0; position:relative; left:50%;transform: translateX(-50%);")
+        .content
+          hi.ui.header(style="font-size:3rem;") Top Finders
+        .content
+          .row
+            .three.wide.column
+            .ten.wide.column
+              .ui.relaxed.ordered.divided.list
+                each user in leaderboardData
+                  .item 
+                    .right.floated.content= user.score
+                    .content.name= user.username
+      
+            
+    .ui.inverted.vertical.footer.center.aligned.segment(style="background-image: url(\"./images/background4.png\");background-attachment: fixed; background-repeat: no-repeat; background-size:cover; padding: 2em 0;")
+      | built with &nbsp;
+      i.fa.fa-heart 
+      | &nbsp;&nbsp;HTN 2017 
+        
+  script(src='./js/jquery-3.2.1.min.js')
+  script(src='./js/semantic.min.js')
+  script(src='./js/menufix.js')
