@@ -34,7 +34,7 @@ mod.getNewTarget = (userId) => {
                     resolve(getRandomFromSetDifference(targets, found));
                 });
             } else {
-                reject();
+                //reject();
             }
         });
     }
@@ -54,7 +54,7 @@ mod.replaceTarget = (userId, replaced) => {
                     resolve();
                 });
             } else {
-                reject();
+                //reject();
             }
         });
     };
@@ -65,15 +65,43 @@ mod.targetFound = (userId, targetName) => {
     let targetRef = targetMetaRef.child(targetName);
     let foundRef = usersRef.child(userId + '/found');
     targetRef.once('value').then((target) => {
-        let targetObj = targets.val();
+        let targetObj = target.val();
         if (targetObj && targetObj.foundBy) {
-            targetObj.foundBy.push(userId);
-            targetObj.value = calculateValue(targetObj.foundBy.length);
-            targetRef.set();
+            if (foundObj.index(targetName) == -1) {
+                targetObj.foundBy.push(userId);
+                targetObj.value = calculateValue(targetObj.foundBy.length);
+                targetRef.set(targetObj);
+            }
+        } else {
+            targetRef.set({
+                foundBy: [userId],
+                value: calculateValue(1)
+            });
         }
     });
-    foundRef.child(userId).once('value')
-    mod.replaceTarget(userId, target);
+    foundRef.once('value').then((found) => {
+        let foundObj = found.val();
+        if (foundObj) {
+            if (foundObj.indexOf(targetName) == -1) {
+                foundObj.push(targetName);
+                foundRef.set(foundObj);
+            }
+        } else {
+            foundRef.set([targetName]);
+        }
+    });
+    mod.replaceTarget(userId, targetName);
+};
+
+mod.initUser = (user) => {
+    let userRef = usersRef.child(user.userId);
+    userRef.once('value').then((existing) => {
+        if (!existing.val()) {
+
+        } else {
+            
+        }
+    });
 };
 
 function getRandomFromSetDifference(a, b) {
@@ -90,8 +118,9 @@ function getRandomFromSetDifference(a, b) {
             return n;
         }
     }
+    return null;
 }
 
-function calculateValue (foundBy) {
-    return Math.floor(10000 / foundBy + 10);
+function calculateValue(foundBy) {
+    return Math.floor(10000 / (foundBy + 9));
 }

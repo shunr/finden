@@ -13,12 +13,14 @@ mod.init = (app) => {
     ioGame.on('connection', (socket) => {
         socket.on('auth', (data) => {
             socket.userId = data.userId;
+            console.log(data);
         });
-        socket.on('get');
+        console.log("succ");
     });
-    db.replaceTarget('testid', 'memes').then((target) => {
+    /*db.replaceTarget('testid', 'leek').then((target) => {
         console.log(target);
-    });
+    });*/
+    db.targetFound('testid', 'bottle');
 };
 
 function onAuth(data) { 
