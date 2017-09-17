@@ -12,7 +12,7 @@ mod.init = (app) => {
     let ioGame = io.of('/game');
     ioGame.on('connection', (socket) => {
         game.runGameSession(socket);
-        console.log("succ");
+        console.log("User connected");
     });
     /*db.replaceTarget('testid', 'leek').then((target) => {
         console.log(target);
