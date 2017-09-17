@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="arm64-v8a,armeabi-v7a,armeabi"
+    api-level="24"
+    density="xxhdpi"
+    format="8"
+    plugin-version="2.2.3"
+    timestamp="114958451957848"
+    token="-3469854998650910800"
+    verifier="INITIAL_BUILD" >
+
+    <task
+        name="javac"
+        duration="1044" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="1583" />
+    <task
+        name="verifier"
+        duration="208" />
+
+    <artifact
+        location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/dependencies_e57d86a544aaae4b5610198f938444e3bacba72b.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_0.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_1.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_2.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_3.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_4.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_5.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_6.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_7.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_8.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_9.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/outputs/apk/app-debug.apk"
+        type="SPLIT_MAIN" />
+
+    <build
+        timestamp="114958451957848"
+        verifier="INITIAL_BUILD" >
+        <artifact
+            location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/dependencies_e57d86a544aaae4b5610198f938444e3bacba72b.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/split-apk/debug/slice_9.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/outputs/apk/app-debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+
+</instant-run>

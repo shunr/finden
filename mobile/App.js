@@ -6,7 +6,7 @@ import reducer from './reducers'
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 
-const store = createStore(reducer, {screen: 'mainMenu'},
+const store = createStore(reducer, {screen: 'game'},
     applyMiddleware(thunkMiddleware)
 )
 
