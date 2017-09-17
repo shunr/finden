@@ -12,9 +12,7 @@ let mod = module.exports = {};
 
 //take in single image and classify it
 
-
 mod.classifyImage = (base64Data, tags) => {
-
     return new Promise((resolve, reject) => {
         zipImages(base64Data).then((zipPath) => {
             let visualRecognition = watson.visual_recognition({
@@ -61,9 +59,9 @@ function base64ToTempFile(base64Data) {
                 if (err) {
                     console.log(err);
                 }
-                
+
                 paths.push(path);
-                c+=1
+                c += 1
                 if (c == base64Data.length) {
                     console.log(paths);
                     resolve(paths);
@@ -80,7 +78,9 @@ function zipImages(base64Data) {
             let zipPath = './temp/' + id + '.zip';
             var output = fs.createWriteStream(zipPath);
             var archive = archiver('zip', {
-                zlib: { level: 9 }
+                zlib: {
+                    level: 9
+                }
             });
 
             output.on('close', function () {
@@ -103,7 +103,9 @@ function zipImages(base64Data) {
             archive.pipe(output);
 
             for (let i = 0; i < imagePaths.length; i++) {
-                archive.append(fs.createReadStream(imagePaths[i]), { name: uuidv4() + '.jpg' }); //replace with proper file extension
+                archive.append(fs.createReadStream(imagePaths[i]), {
+                    name: uuidv4() + '.jpg'
+                }); //replace with proper file extension
             }
 
             archive.finalize();
@@ -127,7 +129,7 @@ function getMatchedTags(classification, targetTags) {
 
     let matchedTags = [];
     for (let i = 0; i < targetTags.length; i++) {
-        if (tagSum[targetTags[i]] > conf.classifier.MATCH_THRESHOLD) {
+        if (tagSum[targetTags[i]] > conf.classifier.MATCH_THRESHOLD*classification.length) {
             matchedTags.push(targetTags[i]);
         }
     }
