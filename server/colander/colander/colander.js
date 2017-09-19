@@ -14,8 +14,4 @@ mod.init = (app) => {
         game.runGameSession(socket);
         console.log("User connected");
     });
-    /*db.replaceTarget('testid', 'leek').then((target) => {
-        console.log(target);
-    });*/
-    //db.targetFound('3GijTGv3q1XXZWHV5Tg9Y4vbjxe2', 'bottle');
 };
