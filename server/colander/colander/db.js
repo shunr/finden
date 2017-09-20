@@ -70,7 +70,7 @@ mod.replaceTarget = (userId, replaced) => {
     return new Promise(promise);
 };
 
-mod.targetFound = (userId, targetName) => {
+mod.targetFound = (userId, targetName, callback) => {
     let targetRef = targetMetaRef.child(targetName);
     let foundRef = usersRef.child(userId + '/found');
     targetRef.once('value').then((target) => {
@@ -82,8 +82,10 @@ mod.targetFound = (userId, targetName) => {
                 targetObj.value = calculateValue(targetObj.foundBy.length);
                 targetRef.set(targetObj).then(() => {
                     updateUserScores(userId, prevScore, targetObj.value, targetName);
+                  
                 });
             }
+          
         } else {
             let value = calculateValue(1);
             targetRef.set({

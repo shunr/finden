@@ -12,6 +12,7 @@ mod.runGameSession = (socket) => {
         db.initUser(user).then(() => {
             foundListener(socket);
         });
+				console.log(socket.userId);
     });
     //db.targetFound('RxRS7Ys4EETn2ddsdsdJpIsssqZl7m1', 'chair');
 }
@@ -19,12 +20,16 @@ mod.runGameSession = (socket) => {
 function foundListener(socket) {
     socket.on('found', (data) => {
         console.log(data);
-        db.getCurrentTargets().then((tags) => {
+        db.getCurrentTargets(socket.userId).then((tags) => {
             imageclassifier.classifyImage(data.images, tags).then((found) => {
+								console.log(found);
                 for (let i = 0; i < found.length; i++) {
                     db.targetFound(socket.userId, found[i]);
                     socket.emit('correct', found[i]);
                 }
+								if (found.length == 0) {
+									socket.emit('correct', -1);
+								}
             });
         });
     });

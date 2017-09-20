@@ -3,7 +3,6 @@
 'use strict';
 const watson = require('watson-developer-cloud');
 const conf = require('../config.json');
-const test = require('../test.json');
 const archiver = require('archiver');
 const uuidv4 = require('uuid/v4');
 const fs = require('fs');
@@ -14,14 +13,14 @@ let mod = module.exports = {};
 
 mod.classifyImage = (base64Data, tags) => {
     return new Promise((resolve, reject) => {
-        zipImages(base64Data).then((zipPath) => {
+        base64ToTempFile(base64Data).then((imagePath) => {
             let visualRecognition = watson.visual_recognition({
                 api_key: conf.classifier.WATSON_API_KEY,
                 version: 'v3',
                 version_date: '2016-05-20'
             });
             let params = {
-                images_file: fs.createReadStream(zipPath),
+                images_file: fs.createReadStream(imagePath[0]),
                 parameters: {
                     threshold: conf.classifier.WATSON_THRESHOLD,
                     owners: ['IBM']
@@ -49,10 +48,10 @@ function base64ToTempFile(base64Data) {
     let paths = [];
     return new Promise((resolve, reject) => {
         for (let i = 0; i < base64Data.length; i++) {
-            let matches = base64Data[i].match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+            //let matches = base64Data[i].match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
 
-            let data = new Buffer(matches[2], 'base64');
-
+            //let data = new Buffer(matches[2], 'base64');
+            let data = new Buffer(base64Data[i], 'base64');
             let path = "./temp/" + uuidv4() + ".jpg";
             fs.writeFile(path, data, (err) => {
                 console.log("Written file number " + c);
