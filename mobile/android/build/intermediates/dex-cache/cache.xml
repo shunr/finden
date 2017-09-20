@@ -12,6 +12,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/exploded-aar/Finden/react-native-vector-icons/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f2cf527de8d0bd35d72088fafea02395ba4a9eec">
+        <dex dex="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/pre-dexed/debug/Finden-react-native-vector-icons-unspecified_df64d12e1a47172dd5ca82b535ffb15069cc4c58.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/Derek/.gradle/caches/modules-2/files-2.1/com.drewnoakes/metadata-extractor/2.9.1/53fdf22be10c9d426ec63431c7342895bc642261/metadata-extractor-2.9.1.jar"
         jumboMode="false"
         optimize="true"
@@ -66,21 +75,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
-        <dex dex="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_c708a436ca9838b5c2f7eefd0a5ad419a14468d0.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/Users/Derek/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="f162442a19fff13995fbd51ba414d9ee05579080">
         <dex dex="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_a73dfc72e3c0a0edf7140387b482867ea37839e4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
+        <dex dex="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_c708a436ca9838b5c2f7eefd0a5ad419a14468d0.jar" />
     </item>
     <item
         is-multidex="false"
@@ -102,21 +111,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/Derek/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.6.0/3f9b16b774f2c36cfd86dd2053d0b3059531dacc/okhttp-urlconnection-3.6.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="3f9b16b774f2c36cfd86dd2053d0b3059531dacc">
-        <dex dex="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.6.0_eddac61890886b00beca8baa2815bcb6ee87a394.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="cf836a435a496eb22ff2aa69aa1e619462549f81">
         <dex dex="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fresco-1.0.1_009adfb5e4902f818ed16abb4411242de341dcde.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Derek/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.6.0/3f9b16b774f2c36cfd86dd2053d0b3059531dacc/okhttp-urlconnection-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="3f9b16b774f2c36cfd86dd2053d0b3059531dacc">
+        <dex dex="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.6.0_eddac61890886b00beca8baa2815bcb6ee87a394.jar" />
     </item>
     <item
         is-multidex="false"
@@ -180,6 +189,15 @@
         revision="23.0.1"
         sha1="9809e90be788acdb479b2b44e2112f3295a03068">
         <dex dex="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_bd4fa1af94f2b76aad8398bb9ddea94ca89c936d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/exploded-aar/Finden/react-native-fs/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="74ce84ec9d646456df4ba4950778e70316a9e43e">
+        <dex dex="/Users/Derek/Documents/React Projects/React Native Projects/scavenger-hunt/mobile/android/app/build/intermediates/pre-dexed/debug/Finden-react-native-fs-unspecified_991e34faa12c77544d82c676aad2cd79af103cf5.jar" />
     </item>
     <item
         is-multidex="false"

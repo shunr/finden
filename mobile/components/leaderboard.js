@@ -74,7 +74,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         getLeaderboard: () => {
           dispatch(getLeaderboard())
-        }
+        },
         changeScreen: (newScreen) => {
             dispatch(changeScreen(newScreen))
         },

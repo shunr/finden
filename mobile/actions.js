@@ -1,6 +1,5 @@
 import firebase from './firebase'
 import socket from './socket'
-import request from 'request'
 
 const RNFS = require('react-native-fs');
 
@@ -15,8 +14,12 @@ export function getUser(username) {
                 })
                 if (username) {
                     sendUserInfo(user.uid, user.email, username)
+                } else {
+                    sendUserInfo(user.uid, user.email, null) 
                 }
                 dispatch(getUsername(user.uid))
+                dispatch(getCurrentTargets(user.uid))
+                dispatch(getScore(user.uid))
             } else {
                 // No user is signed in.
             }
@@ -35,9 +38,36 @@ export function getUsername(uid) {
     }
 }
 
+export function getCurrentTargets() {
+    console.log()
+    return dispatch => {
+        let uid = firebase.auth().currentUser.uid
+        firebase.database().ref('/users/' + uid + '/currentTargets').on('value', snapshot => {
+            console.log("LOOOOOOK HERE")
+            console.log(snapshot.val())
+            dispatch({
+                type: "GET_TARGETS",
+                targets: snapshot.val()
+            })
+        })
+    }
+}
+
+export function getScore() {
+    return dispatch => {
+        let uid = firebase.auth().currentUser.uid
+        firebase.database().ref('/users/' + uid + '/score').on('value', snapshot => {
+            dispatch({
+                type: "GET_SCORE",
+                score: snapshot.val()
+            })
+        })
+    }
+}
+
 export function getLeaderboard() {
     return dispatch => {
-        request('http://10.21.225.54/leaderJson').then(data => console.log(data))
+        fetch('http://10.21.225.54/leaderJson').then(data => console.log(data))
     }
 }
 
@@ -57,13 +87,31 @@ export function changeScreen(newScreen) {
 }
 
 export function sendImageBase64(data) {
+    console.log(data)
     return dispatch => {
         RNFS.readFile(data.path, 'base64').then(data => {
             socket.emit('found', {images: [data]});
             socket.on('correct', found => {
-                console.log(found);
+                dispatch(switchLoading())
+                console.log(found)
+                dispatch({
+                    type: 'FOUND_ITEMS',
+                    found: found
+                })
             });
         });
+    }
+}
+
+export function switchLoading() {
+    return ({
+        type: 'SWITCH_LOADING'
+    })
+}
+
+export function resetFound() {
+    return {
+        type: 'RESET_FOUND'
     }
 }
 

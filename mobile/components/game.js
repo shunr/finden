@@ -1,54 +1,45 @@
 import React, { Component } from 'react'
 import { View, TouchableHighlight, Text } from 'react-native'
 import { connect } from 'react-redux'
-import { changeScreen, getUsername, sendImageBase64 } from '../actions'
+import { changeScreen, getUsername, sendImageBase64, switchLoading } from '../actions'
 import Camera from 'react-native-camera'
 import appStyles from '../styles'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 class Game extends Component {
-
+    componentDidMount() {
+        this.setState({found: 'false'})
+    }
     takePicture() {
-
         const options = {};
-<<<<<<< HEAD
+        this.props.switchLoading()
         //options.location = ...
         this.camera.capture({metadata: options})
-          .then((data) => console.log(data))
+          .then((data) => {
+              this.props.sendImageBase64(data)
+              this.props.changeScreen('list')
+          })
           .catch(err => console.error(err));
       }
     render() {
         return (
             <View style={{flex:1, justifyContent: 'center'}}>
-                <Text style = {{textAlign: 'center'}}>
-                    Snap a photo of the target! {//this.props.hasOwnProperty('user') && this.props.user.hasOwnProperty('username') && this.props.user.username
-                    }
-                </Text>
                 <View style={{flex:1, justifyContent: 'center'}}>
-=======
-        //options.location = ... 
-        this.camera.capture({ metadata: options })
-            .then((data) => this.props.sendImageBase64(data))
-            .catch(err => console.error(err));
-
-    }
-    render() {
-        return (
-            <View ref="camera" style={{ flex: 1, justifyContent: 'center', alignItems: 'stretch' }}>
-                <View>
->>>>>>> origin/master
                     <Camera
                         ref={(cam) => {
                             this.camera = cam;
                         }}
                         style={{ height: '100%', width: '100%', justifyContent: 'center' }}
                         aspect={Camera.constants.Aspect.fill}>
-                        <Text style={{ margin: 'auto' }} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
+                        <Text style={{ height: '100%', width: '100%' }} onPress={this.takePicture.bind(this)}></Text>
+                        <Text style = {appStyles.alert}>
+                            Snap a photo of the target!
+                        </Text>
                     </Camera>
                 </View>
-                <TouchableHighlight style={appStyles.buttonBack} onPress={() => this.props.changeScreen('register')}>
-                  <Icon name="chevron-left" size={30} color='#aaa' />
+                <TouchableHighlight style={appStyles.buttonBack} onPress={() => this.props.changeScreen('list')}>
+                  <Icon name="arrow-left" size={30} color='rgba(255,255,255,0.9)' />
                 </TouchableHighlight>
             </View>
         )
@@ -57,7 +48,8 @@ class Game extends Component {
 
 function mapStateToProps(state) {
     return {
-        user: state.user
+        user: state.user,
+        targets: state.targets
     }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -70,6 +62,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         sendImageBase64: (data) => {
             dispatch(sendImageBase64(data))
+        },
+        switchLoading: () => {
+            dispatch(switchLoading())
         }
     }
 }

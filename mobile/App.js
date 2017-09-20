@@ -6,7 +6,7 @@ import reducer from './reducers'
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 
-const store = createStore(reducer, {screen: 'leaderboard'},
+const store = createStore(reducer, {screen: 'login', targets: [], foundItem: -2, loading: false},
     applyMiddleware(thunkMiddleware)
 )
 

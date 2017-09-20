@@ -3,6 +3,7 @@ import MainMenu from './mainMenu'
 import Register from './register'
 import Game from './game'
 import Leaderboard from './leaderboard';
+import List from './list'
 import Login from './login';
 
 import { connect } from 'react-redux'
@@ -20,6 +21,8 @@ class ScreenTransition extends Component {
                 return <Game />
             case 'login':
                 return <Login />
+            case 'list':
+                return <List />
             // case 'leaderboard':
             //   return <Leaderboard />
         }

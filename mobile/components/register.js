@@ -13,28 +13,24 @@ const { MKButton, MKTextField, MKColor } = MK
 
 class Register extends Component {
   handleEmail = (text) => {
-    this.setState({email : text})
+    this.setState({ email: text })
   }
   handlePass = (text) => {
-    this.setState({password: text})
+    this.setState({ password: text })
   }
   handleUsername = (text) => {
-    this.setState({username: text})
+    this.setState({ username: text })
   }
   createUser = () => {
-
-
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(
       () => {
         this.props.getUser(this.state.username)
-        this.setState({firebaseError : ''})
+        this.setState({ firebaseError: '' })
       },
       error => {
-        this.setState({firebaseError : error.message})
+        this.setState({ firebaseError: error.message })
       }
     )
-
-    this.props.changeScreen('game')
   }
   goLogin = () => {
     this.props.changeScreen('login')
@@ -45,14 +41,17 @@ class Register extends Component {
     return (
       <Image
         source={require('../assets/bg.png')}
-        style={styles.backgroundImage}>
+        style={appStyles.backgroundImage}>
 
-        <View style = {appStyles.cardMain}>
+        <View style={appStyles.cardMain}>
           <View style={styles.row}>
             <View style={styles.col}>
-              <Icon style={appStyles.iconLogo} name="rocket" size={42} color={MKColor.BlueGrey} />
+              <Icon style={appStyles.iconLogo} name="moon-o" size={56} color='#7d64ff' />
             </View>
           </View>
+          <Text style={appStyles.mainTitle} size={24}>
+            finden
+          </Text>
           <View style={styles.row}>
             <View style={styles.col}>
               <MKTextField
@@ -84,16 +83,16 @@ class Register extends Component {
           </View>
           <View style={styles.row}>
             <TouchableHighlight style={appStyles.buttonRegister} onPress={this.createUser}>
-              <Text style={{color: '#fff'}}>
+              <Text style={{ color: '#fff' }}>
                 Register <Icon name="rocket" size={16} />
               </Text>
             </TouchableHighlight>
           </View>
 
           <View style={styles.row}>
-            <TouchableHighlight style={appStyles.buttonRegister} onPress={this.goLogin}>
-              <Text style={{color: '#fff'}}>
-                Login Instead <Icon name="rocket" size={12} />
+            <TouchableHighlight style={appStyles.buttonInferior} onPress={this.goLogin}>
+              <Text style={{ color: '#fff' }}>
+                Login instead
               </Text>
             </TouchableHighlight>
           </View>
@@ -121,18 +120,8 @@ const styles = Object.assign({}, appStyles, StyleSheet.create({
     height: 28,  // have to do it on iOS
     marginTop: 32,
   },
-  backgroundImage: {
-    flex: 1,
-    width: null,
-    height: null,
-    resizeMode: 'cover',
-    alignItems: 'center',
-    flexDirection : 'row',
-    justifyContent:'center',
-    padding: 32
-  },
   backgroundCard: {
-    flex:1,
+    flex: 1,
   }
 }))
 

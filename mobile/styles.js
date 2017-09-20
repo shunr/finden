@@ -49,16 +49,25 @@ module.exports = StyleSheet.create({
     borderRadius: 8
   },
   buttonRegister: {
-    backgroundColor: MKColor.BlueGrey,
+    backgroundColor: '#7d64ff',
     paddingLeft: 32,
     paddingRight: 32,
     paddingTop: 16,
     paddingBottom: 16,
     borderRadius: 8,
-    marginBottom: 24,
+    marginBottom: 20,
     marginTop: 10
   },
-
+  buttonInferior: {
+    backgroundColor: '#ccc',
+    paddingLeft: 32,
+    paddingRight: 32,
+    paddingTop: 12,
+    paddingBottom: 12,
+    borderRadius: 8,
+    marginBottom: 24,
+    marginTop: 0
+  },
   iconLogo: {
     padding: 20,
     textAlign: 'center'
@@ -79,5 +88,42 @@ module.exports = StyleSheet.create({
     marginLeft: 7, marginRight: 7,
     padding: 8,
     // color: '#FFF',
+  },
+  backgroundImage: {
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: 'cover',
+    alignItems: 'center',
+    flexDirection : 'row',
+    justifyContent:'center',
+    padding: 32
+  },
+  mainTitle: {
+    textAlign: 'center',
+    color: '#7d64ff',
+    fontSize: 20,
+    backgroundColor: 'transparent'
+  },
+  listItem: {
+    padding: 8,
+    textAlign: 'center'
+  },
+  buttonBack: {
+    position: 'absolute',
+    top: 4,
+    left: 4,
+    color: '#fff'
+  },
+  alert: {fontSize: 24, textAlign: 'center', color: '#fff'},
+  buttonCamera: {
+    backgroundColor: '#7d64ff',
+    paddingLeft: 32,
+    paddingRight: 32,
+    paddingTop: 20,
+    paddingBottom: 20,
+    borderRadius: 16,
+    marginBottom: 10,
+    marginTop: 10
   },
 });
