@@ -48,7 +48,7 @@ class Login extends Component {
           <View style={styles.row}>
             <View style={styles.col}>
               <MKTextField
-                textInputStyle={'#222'}
+                textInputStyle={{color:'#222'}}
                 onChangeText={this.handleEmail}
                 placeholder="Email address"
               />
@@ -58,14 +58,14 @@ class Login extends Component {
             <View style={styles.col}>
               <MKTextField
                 password={true}
-                textInputStyle={'#222'}
+                textInputStyle={{color: '#222'}}
                 onChangeText={this.handlePass}
                 placeholder="Password"
               />
             </View>
           </View>
           <View style={styles.row}>
-            <TouchableHighlight style={appStyles.buttonRegister} onPress={this.login}>
+            <TouchableHighlight style={appStyles.buttonPrimary} onPress={this.login}>
               <Text style={{color: '#fff'}}>
                 Login <Icon name="rocket" size={16} />
               </Text>

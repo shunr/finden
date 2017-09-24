@@ -43,7 +43,6 @@ export function getCurrentTargets() {
     return dispatch => {
         let uid = firebase.auth().currentUser.uid
         firebase.database().ref('/users/' + uid + '/currentTargets').on('value', snapshot => {
-            console.log("LOOOOOOK HERE")
             console.log(snapshot.val())
             dispatch({
                 type: "GET_TARGETS",
@@ -67,7 +66,7 @@ export function getScore() {
 
 export function getLeaderboard() {
     return dispatch => {
-        fetch('http://10.21.225.54/leaderJson').then(data => console.log(data))
+        fetch('http://findengame.com/leaderJson').then(data => console.log(data))
     }
 }
 

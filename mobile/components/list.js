@@ -28,7 +28,7 @@ class List extends Component {
                     <View>
                         <Text style={appStyles.alert}> You found a(n) {this.props.foundItem}! </Text>
                     </View>
-                    <TouchableHighlight style={appStyles.buttonRegister} onPress={() => {
+                    <TouchableHighlight style={appStyles.buttonPrimary} onPress={() => {
                         this.props.resetFound()
                         this.props.getCurrentTargets(this.props.user.uid)
                         this.props.getScore(this.props.user.uid)
@@ -46,7 +46,7 @@ class List extends Component {
                     <View>
                         <Text> Sorry, that is not the item you are looking for </Text>
                     </View>
-                    <TouchableHighlight style={appStyles.buttonRegister} onPress={() => {
+                    <TouchableHighlight style={appStyles.buttonPrimary} onPress={() => {
                         this.props.resetFound()
                         this.props.getCurrentTargets(this.props.user.uid)
                         this.props.getScore(this.props.user.uid)
@@ -63,7 +63,7 @@ class List extends Component {
 
                     <View style={appStyles.cardMain}>
                         <Text style={appStyles.mainTitle} size={24}>
-                            Snap a photo of the target!
+                            Current Targets
                         </Text>
                         <View
                             style={{
@@ -73,7 +73,7 @@ class List extends Component {
                                 borderBottomWidth: 1,
                             }}
                         />
-                        <View style={{textAlign: 'center'}}>
+                        <View style={{alignItems: 'center'}}>
                             <Text style={{fontSize: 20}}> SCORE: {this.props.score} </Text>
                             <Text style={appStyles.listItem}>{this.props.hasOwnProperty('targets') && this.props.targets.length > 0 && this.props.targets[0]}
                                 {/*<Icon name="minus-circle" size={16} color='#ee4411' onPress={() => {socket.emit('replace', this.props.targets[0]); this.props.getCurrentTargets()}} />*/}
@@ -84,7 +84,7 @@ class List extends Component {
                             <Text style={appStyles.listItem}>{this.props.hasOwnProperty('targets') && this.props.targets.length > 0 && this.props.targets[4]}</Text>
                         </View>
                         <TouchableHighlight style={appStyles.buttonCamera} onPress={() => this.props.changeScreen('game')}>
-                            <Icon name="camera" size={24} color='#fff' />
+                            <Icon name="camera" size={24} color='#ffffff' />
                         </TouchableHighlight>
                     </View>
                 </Image>

@@ -82,7 +82,7 @@ class Register extends Component {
             </View>
           </View>
           <View style={styles.row}>
-            <TouchableHighlight style={appStyles.buttonRegister} onPress={this.createUser}>
+            <TouchableHighlight style={appStyles.buttonPrimary} onPress={this.createUser}>
               <Text style={{ color: '#fff' }}>
                 Register <Icon name="rocket" size={16} />
               </Text>

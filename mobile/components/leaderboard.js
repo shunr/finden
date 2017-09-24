@@ -40,7 +40,7 @@ class Leaderboard extends Component {
             </View>
 
             <View style={styles.row}>
-              <TouchableHighlight style={appStyles.buttonRegister} onPress={this.goSignOut}>
+              <TouchableHighlight style={appStyles.buttonPrimary} onPress={this.goSignOut}>
                 <Text style={{color: '#fff'}}>
                   SignOut <Icon name="rocket" size={12} />
                 </Text>
@@ -48,7 +48,7 @@ class Leaderboard extends Component {
             </View>
 
             <View style={styles.row}>
-              <TouchableHighlight style={appStyles.buttonRegister} onPress={this.goCamera}>
+              <TouchableHighlight style={appStyles.buttonPrimary} onPress={this.goCamera}>
                 <Text style={{color: '#fff'}}>
                   Camera <Icon name="rocket" size={16} />
                 </Text>

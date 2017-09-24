@@ -11,7 +11,7 @@ class Game extends Component {
     componentDidMount() {
         this.setState({found: 'false'})
     }
-    takePicture() {
+    takePicture() {     
         const options = {};
         this.props.switchLoading()
         //options.location = ...
@@ -33,9 +33,9 @@ class Game extends Component {
                         style={{ height: '100%', width: '100%', justifyContent: 'center' }}
                         aspect={Camera.constants.Aspect.fill}>
                         <Text style={{ height: '100%', width: '100%' }} onPress={this.takePicture.bind(this)}></Text>
-                        <Text style = {appStyles.alert}>
+                      {/**  <Text style = {appStyles.alert}>
                             Snap a photo of the target!
-                        </Text>
+                        </Text>**/}
                     </Camera>
                 </View>
                 <TouchableHighlight style={appStyles.buttonBack} onPress={() => this.props.changeScreen('list')}>

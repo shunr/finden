@@ -48,7 +48,7 @@ module.exports = StyleSheet.create({
     padding: 16,
     borderRadius: 8
   },
-  buttonRegister: {
+  buttonPrimary: {
     backgroundColor: '#7d64ff',
     paddingLeft: 32,
     paddingRight: 32,
@@ -113,15 +113,20 @@ module.exports = StyleSheet.create({
     position: 'absolute',
     top: 4,
     left: 4,
+    paddingLeft: 10,
+    paddingTop: 10
+  },
+  alert: {
+    fontSize: 24,
+    textAlign: 'center',
     color: '#fff'
   },
-  alert: {fontSize: 24, textAlign: 'center', color: '#fff'},
   buttonCamera: {
     backgroundColor: '#7d64ff',
     paddingLeft: 32,
     paddingRight: 32,
-    paddingTop: 20,
-    paddingBottom: 20,
+    paddingTop: 15,
+    paddingBottom: 15,
     borderRadius: 16,
     marginBottom: 10,
     marginTop: 10

@@ -1,3 +1,5 @@
+# React native build
+**/build/
 temp/
 # Logs
 logs
