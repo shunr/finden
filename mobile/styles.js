@@ -48,6 +48,12 @@ module.exports = StyleSheet.create({
     padding: 16,
     borderRadius: 8
   },
+  responseText: {
+    fontSize: 24,
+    textAlign: 'center',
+    margin: 10,
+    color: '#fff'
+  },
   buttonPrimary: {
     backgroundColor: '#7d64ff',
     paddingLeft: 32,

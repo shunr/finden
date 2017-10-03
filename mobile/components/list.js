@@ -21,12 +21,18 @@ class List extends Component {
                 </Image>
             )
         } else if (this.props.foundItem != -1 && this.props.foundItem != -2) {
+            var textBody = 'You found a';
+            if(isVowelFirst(this.props.foundItem)){
+                textBody += '(n) ';
+            }else{
+                textBody += ' ';
+            }
             return (
                 <Image
                 source={require('../assets/bg.png')}
                 style={appStyles.backgroundImage}>
                     <View>
-                        <Text style={appStyles.alert}> You found a(n) {this.props.foundItem}! </Text>
+                        <Text style={appStyles.responseText}> {textBody + this.props.foundItem}! </Text>
                     </View>
                     <TouchableHighlight style={appStyles.buttonPrimary} onPress={() => {
                         this.props.resetFound()
@@ -44,15 +50,17 @@ class List extends Component {
                 source={require('../assets/bg.png')}
                 style={appStyles.backgroundImage}>
                     <View>
-                        <Text> Sorry, that is not the item you are looking for </Text>
+                        <Text style={appStyles.responseText}> Sorry, that is not the item you are looking for. </Text>
                     </View>
-                    <TouchableHighlight style={appStyles.buttonPrimary} onPress={() => {
-                        this.props.resetFound()
-                        this.props.getCurrentTargets(this.props.user.uid)
-                        this.props.getScore(this.props.user.uid)
-                    }}>
-                        <Icon name="arrow-left" size={24} color='#fff' />
-                    </TouchableHighlight>
+                    <View>
+                        <TouchableHighlight style={appStyles.buttonPrimary} onPress={() => {
+                            this.props.resetFound()
+                            this.props.getCurrentTargets(this.props.user.uid)
+                            this.props.getScore(this.props.user.uid)
+                        }}>
+                            <Icon name="arrow-left" size={24} color='#fff' />
+                        </TouchableHighlight>
+                    </View>
                 </Image>
             )
         } else {
@@ -101,6 +109,10 @@ function mapStateToProps(state) {
         score: state.score,
         loading: state.loading
     }
+}
+
+function isVowelFirst(object) {
+    return /[aeiou]/.test(object[0]);
 }
 const mapDispatchToProps = (dispatch) => {
     return {
