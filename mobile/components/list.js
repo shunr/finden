@@ -23,7 +23,7 @@ class List extends Component {
         } else if (this.props.foundItem != -1 && this.props.foundItem != -2) {
             var textBody = 'You found a';
             if(isVowelFirst(this.props.foundItem)){
-                textBody += '(n) ';
+                textBody += 'n ';
             }else{
                 textBody += ' ';
             }
